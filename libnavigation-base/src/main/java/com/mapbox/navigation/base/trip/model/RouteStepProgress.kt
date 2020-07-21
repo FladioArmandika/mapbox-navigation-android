@@ -20,7 +20,7 @@ import com.mapbox.geojson.Point
  * @param durationRemaining [Double] The duration remaining in seconds until the user reaches the end of the current step
  * @param guidanceViewURL [String] Guidance image URL
  */
-data class RouteStepProgress(
+class RouteStepProgress private constructor(
     val stepIndex: Int,
     val step: LegStep?,
     val stepPoints: List<Point>?,
@@ -30,6 +30,43 @@ data class RouteStepProgress(
     val durationRemaining: Double,
     val guidanceViewURL: String?
 ) {
+
+    /**
+     * Regenerate whenever a change is made
+     */
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as RouteStepProgress
+
+        if (stepIndex != other.stepIndex) return false
+        if (step != other.step) return false
+        if (stepPoints != other.stepPoints) return false
+        if (distanceRemaining != other.distanceRemaining) return false
+        if (distanceTraveled != other.distanceTraveled) return false
+        if (fractionTraveled != other.fractionTraveled) return false
+        if (durationRemaining != other.durationRemaining) return false
+        if (guidanceViewURL != other.guidanceViewURL) return false
+
+        return true
+    }
+
+    /**
+     * Regenerate whenever a change is made
+     */
+    override fun hashCode(): Int {
+        var result = stepIndex
+        result = 31 * result + (step?.hashCode() ?: 0)
+        result = 31 * result + (stepPoints?.hashCode() ?: 0)
+        result = 31 * result + distanceRemaining.hashCode()
+        result = 31 * result + distanceTraveled.hashCode()
+        result = 31 * result + fractionTraveled.hashCode()
+        result = 31 * result + durationRemaining.hashCode()
+        result = 31 * result + (guidanceViewURL?.hashCode() ?: 0)
+        return result
+    }
+
     /**
      * Builder of [RouteStepProgress]
      */

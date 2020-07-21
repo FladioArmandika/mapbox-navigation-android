@@ -11,7 +11,7 @@ import java.net.URI
  * @param filePath used for storing road network tiles
  * @param builder used for updating options
  */
-data class OnboardRouterOptions(
+class OnboardRouterOptions private constructor(
     val tilesUri: URI,
     val tilesVersion: String,
     val filePath: String?,
@@ -21,6 +21,32 @@ data class OnboardRouterOptions(
      * @return the builder that created the [OnboardRouterOptions]
      */
     fun toBuilder() = builder
+
+    /**
+     * Regenerate whenever a change is made
+     */
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as OnboardRouterOptions
+
+        if (tilesUri != other.tilesUri) return false
+        if (tilesVersion != other.tilesVersion) return false
+        if (filePath != other.filePath) return false
+
+        return true
+    }
+
+    /**
+     * Regenerate whenever a change is made
+     */
+    override fun hashCode(): Int {
+        var result = tilesUri.hashCode()
+        result = 31 * result + tilesVersion.hashCode()
+        result = 31 * result + (filePath?.hashCode() ?: 0)
+        return result
+    }
 
     /**
      * Builder for [OnboardRouterOptions]. You must choose a [filePath]

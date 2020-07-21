@@ -13,7 +13,7 @@ package com.mapbox.navigation.core.replay.route
  * @param minAcceleration How fast the driver will decelerate in mps^2
  * @param builder used for updating options
  */
-class ReplayRouteOptions(
+class ReplayRouteOptions private constructor(
     val maxSpeedMps: Double,
     val turnSpeedMps: Double,
     val uTurnSpeedMps: Double,
@@ -25,6 +25,36 @@ class ReplayRouteOptions(
      * @return the builder that created the [ReplayRouteOptions]
      */
     fun toBuilder() = builder
+
+    /**
+     * Regenerate whenever a change is made
+     */
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as ReplayRouteOptions
+
+        if (maxSpeedMps != other.maxSpeedMps) return false
+        if (turnSpeedMps != other.turnSpeedMps) return false
+        if (uTurnSpeedMps != other.uTurnSpeedMps) return false
+        if (maxAcceleration != other.maxAcceleration) return false
+        if (minAcceleration != other.minAcceleration) return false
+
+        return true
+    }
+
+    /**
+     * Regenerate whenever a change is made
+     */
+    override fun hashCode(): Int {
+        var result = maxSpeedMps.hashCode()
+        result = 31 * result + turnSpeedMps.hashCode()
+        result = 31 * result + uTurnSpeedMps.hashCode()
+        result = 31 * result + maxAcceleration.hashCode()
+        result = 31 * result + minAcceleration.hashCode()
+        return result
+    }
 
     /**
      * Used to build [ReplayRouteOptions].

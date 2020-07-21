@@ -89,11 +89,6 @@ package com.mapbox.navigation.core.arrival {
   }
 
   public final class ArrivalOptions {
-    ctor public ArrivalOptions(Double? arrivalInSeconds, Double? arrivalInMeters, com.mapbox.navigation.core.arrival.ArrivalOptions.Builder builder);
-    method public Double? component1();
-    method public Double? component2();
-    method public com.mapbox.navigation.core.arrival.ArrivalOptions.Builder component3();
-    method public com.mapbox.navigation.core.arrival.ArrivalOptions copy(Double? arrivalInSeconds, Double? arrivalInMeters, com.mapbox.navigation.core.arrival.ArrivalOptions.Builder builder);
     method public Double? getArrivalInMeters();
     method public Double? getArrivalInSeconds();
     method public com.mapbox.navigation.core.arrival.ArrivalOptions.Builder getBuilder();
@@ -288,7 +283,6 @@ package com.mapbox.navigation.core.replay.route {
   }
 
   public final class ReplayRouteOptions {
-    ctor public ReplayRouteOptions(double maxSpeedMps, double turnSpeedMps, double uTurnSpeedMps, double maxAcceleration, double minAcceleration, com.mapbox.navigation.core.replay.route.ReplayRouteOptions.Builder builder);
     method public com.mapbox.navigation.core.replay.route.ReplayRouteOptions.Builder getBuilder();
     method public double getMaxAcceleration();
     method public double getMaxSpeedMps();
@@ -370,11 +364,6 @@ package com.mapbox.navigation.core.sensors {
   }
 
   public final class SensorOptions {
-    ctor public SensorOptions(java.util.Set<java.lang.Integer> enabledSensorTypes, int signalsPerSecond, com.mapbox.navigation.core.sensors.SensorOptions.Builder builder);
-    method public java.util.Set<java.lang.Integer> component1();
-    method public int component2();
-    method public com.mapbox.navigation.core.sensors.SensorOptions.Builder component3();
-    method public com.mapbox.navigation.core.sensors.SensorOptions copy(java.util.Set<java.lang.Integer> enabledSensorTypes, int signalsPerSecond, com.mapbox.navigation.core.sensors.SensorOptions.Builder builder);
     method public com.mapbox.navigation.core.sensors.SensorOptions.Builder getBuilder();
     method public java.util.Set<java.lang.Integer> getEnabledSensorTypes();
     method public int getSignalsPerSecond();

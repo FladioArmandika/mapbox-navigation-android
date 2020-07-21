@@ -53,7 +53,7 @@ class AutoArrivalController : ArrivalController {
  * [ArrivalController.navigateNextRouteLeg] will be called
  * @param builder used for updating options
  */
-data class ArrivalOptions(
+class ArrivalOptions private constructor(
     val arrivalInSeconds: Double?,
     val arrivalInMeters: Double?,
     val builder: Builder
@@ -62,6 +62,30 @@ data class ArrivalOptions(
      * @return the builder that created the [ArrivalOptions]
      */
     fun toBuilder() = builder
+
+    /**
+     * Regenerate whenever a change is made
+     */
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as ArrivalOptions
+
+        if (arrivalInSeconds != other.arrivalInSeconds) return false
+        if (arrivalInMeters != other.arrivalInMeters) return false
+
+        return true
+    }
+
+    /**
+     * Regenerate whenever a change is made
+     */
+    override fun hashCode(): Int {
+        var result = arrivalInSeconds?.hashCode() ?: 0
+        result = 31 * result + (arrivalInMeters?.hashCode() ?: 0)
+        return result
+    }
 
     /**
      * Build your [ArrivalOptions].

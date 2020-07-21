@@ -8,7 +8,7 @@ package com.mapbox.navigation.core.sensors
  * @param signalsPerSecond signals per second received from sensors
  * @param builder used for updating options
  */
-data class SensorOptions(
+class SensorOptions private constructor(
     val enabledSensorTypes: Set<Int>,
     val signalsPerSecond: Int,
     val builder: Builder
@@ -17,6 +17,30 @@ data class SensorOptions(
      * @return the builder that created the [SensorOptions]
      */
     fun toBuilder() = builder
+
+    /**
+     * Regenerate whenever a change is made
+     */
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (javaClass != other?.javaClass) return false
+
+        other as SensorOptions
+
+        if (enabledSensorTypes != other.enabledSensorTypes) return false
+        if (signalsPerSecond != other.signalsPerSecond) return false
+
+        return true
+    }
+
+    /**
+     * Regenerate whenever a change is made
+     */
+    override fun hashCode(): Int {
+        var result = enabledSensorTypes.hashCode()
+        result = 31 * result + signalsPerSecond
+        return result
+    }
 
     /**
      * Builder of [SensorOptions]

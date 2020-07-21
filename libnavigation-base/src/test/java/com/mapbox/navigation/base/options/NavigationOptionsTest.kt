@@ -93,4 +93,22 @@ class NavigationOptionsTest {
         assertEquals(options.navigatorPredictionMillis, newNavigatorPredictionMillis)
         assertEquals(options.distanceFormatter, distanceFormatter)
     }
+
+    @Test
+    fun whenSeparateBuildersBuildSameOptions() {
+        val timeFormat = TWELVE_HOURS
+        val navigatorPredictionMillis = 1020L
+
+        val options = NavigationOptions.Builder(context)
+            .timeFormatType(timeFormat)
+            .navigatorPredictionMillis(navigatorPredictionMillis)
+            .build()
+
+        val otherOptions = NavigationOptions.Builder(context)
+            .timeFormatType(timeFormat)
+            .navigatorPredictionMillis(navigatorPredictionMillis)
+            .build()
+
+        assertEquals(options, otherOptions)
+    }
 }
