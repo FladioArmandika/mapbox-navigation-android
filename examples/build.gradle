@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.github.triplet.play'
+apply plugin: 'com.mapbox.maps.token'
 apply from: "${rootDir}/gradle/script-git-version.gradle"
 apply from: "${rootDir}/gradle/ktlint.gradle"
 
@@ -96,7 +97,6 @@ dependencies {
     implementation project(':libnavigation-util')
     implementation project(':libnavigator')
     implementation project(':libnavigation-ui')
-    implementation project(':libnavui-alert')
     implementation dependenciesList.mapboxAndroidCommon
     implementation dependenciesList.mapboxLogger
     implementation dependenciesList.mapboxAnnotationPlugin
@@ -144,6 +144,5 @@ dependencies {
     }
 }
 
-apply from: "${rootDir}/gradle/developer-config.gradle"
 apply from: "${rootDir}/gradle/checkstyle.gradle"
 apply from: "${rootDir}/gradle/dependency-updates.gradle"

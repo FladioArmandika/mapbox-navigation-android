@@ -95,12 +95,8 @@ allprojects {
 
 subprojects {
   apply plugin: 'idea'
-  apply plugin: 'net.ltgt.errorprone'
   apply from: "${rootDir}/gradle/dependencies.gradle"
-
-  dependencies {
-    errorprone dependenciesList.errorprone
-  }
+  apply from: "${rootDir}/gradle/dependency-updates.gradle"
 
   plugins.withId('org.jetbrains.kotlin.jvm') {
     compileKotlin {
