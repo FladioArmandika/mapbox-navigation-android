@@ -143,6 +143,3 @@ dependencies {
         force = true
     }
 }
-
-apply from: "${rootDir}/gradle/checkstyle.gradle"
-apply from: "${rootDir}/gradle/dependency-updates.gradle"

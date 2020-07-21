@@ -97,6 +97,7 @@ subprojects {
   apply plugin: 'idea'
   apply from: "${rootDir}/gradle/dependencies.gradle"
   apply from: "${rootDir}/gradle/dependency-updates.gradle"
+  apply from: "${rootDir}/gradle/checkstyle.gradle"
 
   plugins.withId('org.jetbrains.kotlin.jvm') {
     compileKotlin {
