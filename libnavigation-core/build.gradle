@@ -54,11 +54,13 @@ dependencies {
     implementation project(':libnavigation-util')
     implementation project(':libnavigator')
     runtimeOnly project(':libdirections-hybrid')
-    runtimeOnly project(':libtrip-notification')
+    implementation project(':libtrip-notification')
     runtimeOnly dependenciesList.mapboxLogger
     implementation project(':libnavigation-metrics')
     implementation dependenciesList.mapboxAndroidAccounts
     implementation dependenciesList.mapboxSdkTurf
+    implementation dependenciesList.androidXAppCompat
+    implementation dependenciesList.lifecycleExtensions
 
     //ktlint
     ktlint dependenciesList.ktlint
@@ -72,6 +74,8 @@ dependencies {
 
     testImplementation project(':libdirections-hybrid')
     testImplementation project(':libtrip-notification')
+
+    androidTestImplementation project(':libtesting-ui')
 }
 
 apply from: "${rootDir}/gradle/track-public-apis.gradle"
