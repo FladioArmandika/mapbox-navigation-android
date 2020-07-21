@@ -26,7 +26,7 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.isActive
 import kotlinx.coroutines.launch
 
-class TripServiceActivity : AppCompatActivity() {
+internal class TripServiceActivity : AppCompatActivity() {
 
     private var mainJobController = ThreadController.getMainScopeAndRootJob()
     private lateinit var mapboxTripNotification: MapboxTripNotification
