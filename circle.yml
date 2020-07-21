@@ -481,7 +481,7 @@ jobs:
       - login-google-cloud-platform
       - run-firebase-instrumentation:
           module_target: "libnavigation-core"
-          variant: "Debug"
+          variant: "debug"
       - build-module:
           module_target: "examples"
           variant: "Release"
